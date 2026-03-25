@@ -1,0 +1,55 @@
+
+import 'package:biolo_app/layers/presentation/ui/controller/theme/dark_and_light_switch_controller.dart';
+import 'package:biolo_app/layers/presentation/ui/pages/home/welcome_page.dart';
+import 'package:biolo_app/layers/presentation/ui/pages/splash_pages/splash_1_page.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'layers/presentation/ui/pages/acessoPages/acess_new_register_page.dart';
+import 'layers/presentation/ui/pages/acessoPages/login_page.dart';
+import 'layers/presentation/ui/pages/home/home.dart';
+ 
+import 'layers/presentation/ui/pages/profile/profile.dart';
+import 'layers/presentation/ui/pages/splash_pages/next_splash_2.dart';
+
+class InitAllPage extends StatelessWidget {
+  final Map<String,dynamic> casa;
+  const InitAllPage({super.key,required this.casa});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(animation: DarkAndLightThemeController.instaceDark, builder:(context, child) {
+     return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Biolo',
+      
+      theme: ThemeData(
+      brightness:DarkAndLightThemeController.instaceDark.themeDark ?  Brightness.dark : Brightness.light ,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+     initialRoute: '/abertura',
+     routes: {
+"/abertura":(context)=>const  Splash1Page(),
+"/abertura1":(context)=>const  SplasHouseTheme(),
+"/principal":(context)=>  PaginaInicial(),
+"/acessNewRegisterPage":(context)=>const AcessNewRegisterPage(),
+"/login_page":(context)=>const LoginPage(),
+"/welcome_page":(context)=>const WelcomePage(),
+"/profile":(context)=>const ProfileUser(),
+
+
+
+     }
+    );
+    },);
+  }
+}
+
+// final GoRouter router = GoRouter(
+//   initialLocation: '/abertura',
+//   routes: [
+//     GoRoute (path: String.fromCharCode( 47), builder: (context, state) {
+//       return const InitAllPage();
+//     } )
+//      ]);
