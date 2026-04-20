@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
     });
     try {
       final auth = GetIt.I.get<PegarUserLogin>();
-      final result = await auth.apiLogin(
+      final result = await auth.apiLoginUser(
         _txtLoginController.text.trim(),
         _txtSenhaController.text,
       );

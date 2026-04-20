@@ -9,7 +9,7 @@ class PegarUserLogin {
     required this.dioUrls,
   });
 
-      Future<Map<String, dynamic>> apiLogin(String login , String senha, {String? authorizationToken}) async{
+      Future<Map<String, dynamic>> apiLoginUser(String login , String senha, {String? authorizationToken}) async{
 try{
 final options = Options(
   headers: {

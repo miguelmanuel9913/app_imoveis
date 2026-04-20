@@ -23,4 +23,6 @@ class BuscarCasaLocalDatasourceImp implements BuscarCasaDatasource {
 
   static BuscarCasaLocalDatasourceImp get instance =>
       BuscarCasaLocalDatasourceImp();
+
+      
 }
