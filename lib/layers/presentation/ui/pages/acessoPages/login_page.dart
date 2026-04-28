@@ -22,6 +22,18 @@ class _LoginPageState extends State<LoginPage> {
   bool _rememberMe = false;
   bool _loading = false;
 
+  String _resolverRotaPorTipoUsuario(String tipoUsuario) {
+    final tipoNormalizado = tipoUsuario.trim().toLowerCase();
+
+    if (tipoNormalizado == '2' ||
+        tipoNormalizado == 'proprietario' ||
+        tipoNormalizado == 'proprietário') {
+      return '/proprietario';
+    }
+
+    return '/principal';
+  }
+
   void _toggleVisibility() {
     setState(() {
       _obscureText = !_obscureText;
@@ -39,13 +51,18 @@ class _LoginPageState extends State<LoginPage> {
       _loading = true;
     });
     try {
+      print('[LOGIN PAGE] Tentando logar');
+      print('[LOGIN PAGE] login="${_txtLoginController.text.trim()}"');
       final auth = GetIt.I.get<PegarUserLogin>();
       final result = await auth.apiLoginUser(
         _txtLoginController.text.trim(),
         _txtSenhaController.text,
       );
+      print('[LOGIN PAGE] Retorno do datasource: $result');
       final token = result['token'] as String? ?? '';
       final user = result['user'] as UserDto;
+      print('[LOGIN PAGE] Token final: $token');
+      print('[LOGIN PAGE] User final: $user');
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('auth_token', token);
       await prefs.setString('current_user', jsonEncode(user.toJson()));
@@ -53,8 +70,10 @@ class _LoginPageState extends State<LoginPage> {
         await prefs.setString('remember_login', _txtLoginController.text.trim());
       }
       if (!mounted) return;
-      Navigator.of(context).pushNamed("/principal");
+      final rotaDestino = _resolverRotaPorTipoUsuario(user.tipoUsuario);
+      Navigator.of(context).pushNamed(rotaDestino);
     } catch (e) {
+      print('[LOGIN PAGE][ERRO] $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Falha no login: $e"),

@@ -9,6 +9,7 @@ class CasaEntity {
   String? topologiaCasa;
   bool? estadoCasa;
   int? proprietarioId;
+  List<String>? imagensCasa;
 
   CasaEntity(
       {this.idCasa,
@@ -18,7 +19,9 @@ class CasaEntity {
       this.tipoCasa,
       this.topologiaCasa,
       this.estadoCasa,
-      this.proprietarioId});
+      this.proprietarioId,
+      this.imagensCasa
+      });
 
   setLogica() {
     if (precoCasa! >= 1000) {

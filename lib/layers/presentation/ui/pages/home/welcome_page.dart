@@ -59,6 +59,27 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 10),
+            // SizedBox(
+            //   width: 250,
+            //   child: OutlinedButton(
+            //     style: OutlinedButton.styleFrom(
+            //       side: BorderSide(color: ColorsConst.sunstColor6),
+            //       padding: const EdgeInsets.symmetric(vertical: 14),
+            //     ),
+            //     onPressed: () {
+            //       Navigator.of(context).pushNamed('/proprietario');
+            //     },
+            //     child: Text(
+            //       'Area do proprietario',
+            //       style: TextStyle(
+            //         color: ColorsConst.sunstColor6,
+            //         fontWeight: FontWeight.w600,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+         
           ],
         ),
       ),

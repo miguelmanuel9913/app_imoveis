@@ -22,6 +22,8 @@ class HouseDatasourceApi {
         }),
       );
 
+      print ('response status code: ${response.statusCode}');
+      print (urlsDio.dio.options.baseUrl + url);
       if (response.statusCode == 200) {
         print('casa registrada com sucesso');
 

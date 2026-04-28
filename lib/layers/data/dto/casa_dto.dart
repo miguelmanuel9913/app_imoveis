@@ -8,6 +8,7 @@ class CasaDto extends CasaEntity {
   String? topologiaCasaDto;
   bool? estadoCasaDto;
   int? proprietarioIdDto;
+  List<String>? imagensCasaDto;
 
   CasaDto({
     this.idCasaDto,
@@ -18,6 +19,7 @@ class CasaDto extends CasaEntity {
     this.topologiaCasaDto,
     this.estadoCasaDto,
     this.proprietarioIdDto,
+    this.imagensCasaDto,
   }) : super(
     idCasa: idCasaDto,
     descricaoCAsa: descricaoCAsaDto,
@@ -27,6 +29,7 @@ class CasaDto extends CasaEntity {
     proprietarioId: proprietarioIdDto,
     tipoCasa: tipoCasaDto,
     topologiaCasa: topologiaCasaDto,
+    imagensCasa: imagensCasaDto,
   );
 
   CasaDto.fromJson(Map<String, dynamic> json)  {
@@ -38,6 +41,7 @@ class CasaDto extends CasaEntity {
     proprietarioIdDto = json["proprietarioIdCasa"];
     tipoCasaDto = json["tipoCasa"];
     topologiaCasaDto = json["topologiaCasa"];
+    imagensCasaDto = List<String>.from(json["imagensCasa"] ?? []);
   }
 
   Future<Map<String, dynamic>> toJson() async {
@@ -50,6 +54,7 @@ class CasaDto extends CasaEntity {
       "proprietarioIdCasa": proprietarioIdDto,
       "tipoCasa": tipoCasaDto,
       "topologiaCasa": topologiaCasaDto,
+      "imagensCasa": imagensCasaDto,
     };
   }
 }

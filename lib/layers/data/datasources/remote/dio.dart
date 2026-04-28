@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'package:biolo_app/core/inject/config/const.dart';
 import 'package:dio/dio.dart';
+
 
 class DioUrls {
   final Dio dio;
@@ -19,10 +21,7 @@ class DioUrls {
         );
 
   static String get _defaultBaseUrl {
-    if (Platform.isAndroid) {
-      return 'http://10.0.2.2:5264/';
-    }
-    return 'http://localhost:5264/';
+    return ConstApi.apiCosnt;
   }
 
   void setBearerToken(String token) {
