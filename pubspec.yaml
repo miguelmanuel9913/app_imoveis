@@ -49,6 +49,9 @@ dev_dependencies:
 
   flutter_lints: ^5.0.0
 
+dependency_overrides:
+  page_transition: ^2.2.2
+
 
 
 flutter:
